@@ -1,0 +1,452 @@
+@REM Jordan Owens
+@REM NET 2300
+@REM Assignment 4: Adventure.bat
+@REM Source:
+
+cls
+
+@title Dark Souls Adventure Game
+
+@ECHO OFF
+
+SET /A RoomNumber=1
+SET NorthAvailable==True
+SET SouthAvailable==False
+SET EastAvailable==False
+SET WestAvailable==True
+
+ECHO Dark Souls Text Adventure Game!
+
+: BeginGame
+
+SET /P StartGame="Enter Start to begin the game. Enter Quit to exit "
+
+IF %StartGame%==Start (
+	GOTO RoomInformation
+)
+
+IF %StartGame%==start (
+	GOTO RoomInformation
+)
+
+IF %StartGame%==Quit (
+	exit
+)
+
+IF %StartGame%==quit (
+	exit
+)
+
+IF NOT %StartGame%==Start (
+	ECHO Error! Invalid Input!
+	GOTO BeginGame
+)
+
+IF NOT %StartGame%==start (
+	ECHO Error! Invalid Input!
+	GOTO BeginGame
+)
+
+IF NOT %StartGame%==Quit (
+	ECHO Error! Invalid Input!
+	GOTO BeginGame
+)
+
+IF NOT %StartGame%==quit (
+	ECHO Error! Invalid Input!
+	GOTO BeginGame
+)
+
+: RoomInformation
+IF %RoomNumber% EQU 1 (
+	SET NorthAvailable==True
+	SET SouthAvailable==False
+	SET EastAvailable==False
+	SET WestAvailable==True
+	ECHO You awake in what appears to be an abandoned prison. A cold, lifeless, armor-clad body lays on the floor next to you. Well, he won't be needing the armor, that's for certain. As you leave the room, you find a broadsword on the ground and take it with you for protection against whatever monsters may be lurking around
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 2 (
+	SET NorthAvailable==True
+	SET SouthAvailable==True
+	SET EastAvailable==True
+	SET WestAvailable==False
+	ECHO You step through a wall of fog and emerge in a forest area. A few enemies stand before you, but you cut them down with ease. Though you feel more powerful, you feel just as empty as ever before.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 3 (
+	SET NorthAvailable==True
+	SET SouthAvailable==False
+	SET EastAvailable==True
+	SET WestAvailable==True
+	ECHO Same as the last room, after stepping through a fog gate, you find yourself in a new area. This room appears to be akin to a volcano. Lava and magma surround you as you carefully step along the given path. You tread lightly, as you do not wish to be cooked alive today.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 4 (
+	SET NorthAvailable==True
+	SET SouthAvailable==True
+	SET EastAvailable==False
+	SET WestAvailable==False
+	ECHO As though the world is a mysterious place, this room seems to be completely different from the last, as though they aren't even connected. The chill of the frostbitten snow tears against you, even though you have your armor on to protect you. Three wolves charge at you, and you effortlessly strike them down.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 5 (
+	SET NorthAvailable==True
+	SET SouthAvailable==True
+	SET EastAvailable==True
+	SET WestAvailable==False
+	ECHO Another forest, but this one is different than the first. Ruins of a forgotten civilization scatter the lands and seem to be forgotten with time. You shudder to think just who or what could have caused such devistation to bring down an entire village like this.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 6 (
+	SET NorthAvailable==Fals
+	SET SouthAvailable==True
+	SET EastAvailable==False
+	SET WestAvailable==True
+	ECHO A simple room, this time. In the middle is a sword sticking out from some ash. As you place your hand over the handle, a fire suddenly roars to life in the ashes. You decided to sit and take a breather before continuing on with your journey.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 7 (
+	SET NorthAvailable==True
+	SET SouthAvailable==False
+	SET EastAvailable==True
+	SET WestAvailable==True
+	ECHO A large castle rises before you. The size is immeasurable, you're a bit taken back by the beauty of it. The rising towers, the articulately crafted peaks... It's a shame that it's raining so hard, otherwise you'd appreaciate the finer details more. You move inside the castle and try to find some warmth.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 8 (
+	SET NorthAvailable==False
+	SET SouthAvailable==True
+	SET EastAvailable==True
+	SET WestAvailable==True
+	ECHO As you strike down the knights that charge you, you feel yourself closer to your goal as ever before. You're not sure what you're chasing but you're certain one of the rooms surrounding you has the answer to that.
+	GOTO Movement
+)
+
+IF %RoomNumber% EQU 9 (
+	ECHO You've done it. You've found what you have been searching for. The Eternal Bonfire. Raising your hand you light the ash and sit down next to it. Flames soon begin to rise up around you and soon engulf you, though you feel no pain. Only release and eternal pleasure. By sacrificing yourself, you have saved the kingdom.
+	ECHO YOU WIN!
+	GOTO GameOver
+)
+
+IF %RoomNumber% EQU 10 (
+	ECHO As you enter the room, your eyes lay on a woman in front of you. She seems to wear no clothes. But that's where things go horribly wrong. As you begin to move closer, something more devistating rises up. The woman is attached to a giant, literal fire spider. Once you realize this, it's too late. She's summoned a spear and pierced you right through your gut.
+	ECHO YOU DIED!
+	GOTO GameOver
+)
+
+IF %RoomNumber% EQU 11 (
+	ECHO You enter the room and your deepest fears arise. Spiderwebs cling to the walls, the floor and... As you look up at the cieling, you spot it. The Duke's Dear Freja, a giant two-headed spider had begun to rappel down toards you. Before you could even react, a seemingly infinite amount of smaller spiders had already wrapped your legs in sticky webbing, making you easy prey for their master.
+	ECHO YOU DIED!
+	GOTO GameOver
+)
+
+IF %RoomNumber% EQU 12 (
+	ECHO As you enter the room, you spot a cup made from a skull. You're drawn to it for some inexplicable reason. Once you touch it, you're suddenly transported to a very small area. It's pitch black all around you aside from two gargantuan glowing bracelets. One slowly raises up to reveal the skeletal face of High Lord Wolnir. Your eyes widen as the hand comes crushing down, dragging you away towards a poisonous death.
+	ECHO YOU DIED!
+	GOTO GameOver
+)
+
+IF %RoomNumber% EQU 13 (
+	ECHO Dragon Slayer Ornstein and Executioner Smough stand before you as you enter the room. Ornstein is too swift for you to dodge. He takes your blind spot and drives his Dragonslayer Spear to your spine. You're lifted off your feet and you turn your head just in time to see Smough bring his enormous hammer down, crushing you in an instant.
+	ECHO YOU DIED!
+	GOTO GameOver
+)
+
+IF %RoomNumber% EQU 14 (
+	ECHO The Soul of Cinder rises before you. He wastes no time to protect the Eternal Bonfire and striking down whoever his opponent may be, and today, you are his opponent. You charge him, which probably was not your best idea, as he's already in the air above you, slamming down with a piercing blow from his Firelink Greatsword, easily going through your entire body.
+	ECHO YOU DIED!
+	GOTO GameOver
+)
+
+IF %RoomNumber% EQU 15 (
+	ECHO You find yourself outside once more. In front of you is a single, large knight with an odd looking shield. You approach him carefully, but once you step too close, he slams his shiled down between you. A figure begins to appear in the glass and suddenly, another warrior breaks out and lunges at you with a sword. You dodge his attack, only to feel the Looking Glass Knight's sword come crashing down into your right Trapezius.
+	ECHO YOU DIED!
+	GOTO GameOver
+: Movement
+
+SET /P Direction="Where would you like to proceed? Enter Look to survey your surroundings. "
+
+IF %Direction%==North (
+	IF %NorthAvailable%==True (
+	GOTO North
+	)
+	IF %NorthAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+IF %Direction%==South (
+	IF %SouthAvailable%==True (
+	GOTO South
+	)
+	IF %SouthAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+IF %Direction%==East (
+	IF %EastAvailable%==True (
+	GOTO East
+	)
+	IF %EastAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+
+IF %Direction%==West (
+	IF %WestAvailable%==True (
+	GOTO West
+	)
+	IF %WestAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+
+IF %Direction%==north (
+	IF %NorthAvailable%==True (
+	GOTO North
+	)
+	IF %NorthAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+IF %Direction%==south (
+	IF %SouthAvailable%==True (
+	GOTO South
+	)
+	IF %SouthAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+IF %Direction%==east (
+	IF %EastAvailable%==True (
+	GOTO East
+	)
+	IF %EastAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+
+IF %Direction%==west (
+	IF %WestAvailable%==True (
+	GOTO West
+	)
+	IF %WestAvailable%==False (
+	ECHO You walk into a wall for about 15 minutes. After realizing this is pointless, you decide to look at your options once more.
+	GOTO Movement
+	)
+)
+
+IF %Direction%==Look (
+	GOTO Look
+)
+
+IF %Direction%==look (
+	GOTO Look
+)
+
+IF NOT %Direction%==North (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==north (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==South (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==south (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==East (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==east (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==West (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+IF NOT %Direction%==west (
+	ECHO Error! Invalid input!
+	GOTO Movement
+)
+
+: North
+IF %RoomNumber% EQU 1 (
+	SET /A RoomNumber=2
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 2 (
+	SET /A RoomNumber=12
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 3 (
+	SET /A RoomNumber=4
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 4 (
+	SET /A RoomNumber=5
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 5 (
+	SET /A RoomNumber=6
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 7 (
+	SET /A RoomNumber=15
+	GOTO RoomInformation
+
+: South
+
+IF %RoomNumber% EQU 2 (
+	SET /A RoomNumber=1
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 4 (
+	SET /A RoomNumber=3
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 5 (
+	SET /A RoomNumber=4
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 6 (
+	SET /A RoomNumber=5
+	GOTO RoomInformation
+)
+
+
+
+: East
+
+IF %RoomNumber% EQU 2 (
+	SET /A RoomNumber=3
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 3 (
+	SET /A RoomNumber=11
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 5 (
+	SET /A RoomNumber=14
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 7 (
+	SET /A RoomNumber=6
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 8 (
+	SET /A RoomNumber=7
+	GOTO RoomInformation
+)
+
+
+
+: West
+
+IF %RoomNumber% EQU 1 (
+	SET /A RoomNumber=10
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 3 (
+	SET /A RoomNumber=2
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 6 (
+	SET /A RoomNumber=7
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 7 (
+	SET /A RoomNumber=8
+	GOTO RoomInformation
+)
+
+IF %RoomNumber% EQU 8 (
+	SET /A RoomNumber=9
+	GOTO RoomInformation
+)
+
+: Look
+
+IF %NorthAvailable%==True (
+	ECHO You may proceed North.
+)
+
+IF %SouthAvailable%==True (
+	ECHO You may proceed South.
+)
+
+IF %EastAvailable%==True (
+	ECHO You may proceed East.
+)
+
+IF %WestAvailable%==True (
+	ECHO You may proceed West.
+)
+
+IF %NorthAvailable%==False (
+	ECHO Your path to the North is blocked.
+)
+
+IF %SouthAvailable%==False (
+	ECHO Your path to the South is blocked.
+)
+
+IF %EastAvailable%==False (
+	ECHO Your path to the East is blocked.
+)
+
+IF %WestAvailable%==False (
+	ECHO Your path to the West is blocked.
+)
+
+GOTO Movement
+
+: GameOver
+ECHO You tried your best, but alas, your journey has come to an end. Please try again by restarting the game!
+
+PAUSE
+
+@ECHO ON
